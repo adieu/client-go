@@ -1,4 +1,4 @@
-// +build !windows,!appengine
+// +build !appengine
 
 /*
 Copyright 2014 The Kubernetes Authors.
@@ -16,12 +16,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package util
+package unversioned
 
 import (
-	"syscall"
+	"k8s.io/client-go/pkg/genericapiserver/openapi/common"
+
+	"github.com/go-openapi/spec"
 )
 
-func Umask(mask int) (old int, err error) {
-	return syscall.Umask(mask), nil
+func (_ Time) OpenAPIDefinition() common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type:   []string{"string"},
+				Format: "date-time",
+			},
+		},
+	}
 }

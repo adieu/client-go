@@ -1,3 +1,5 @@
+// +build !appengine
+
 /*
 Copyright 2014 The Kubernetes Authors.
 

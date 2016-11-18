@@ -54,8 +54,6 @@ func IsProbableEOF(err error) bool {
 	return false
 }
 
-var defaultTransport = http.DefaultTransport.(*http.Transport)
-
 // SetOldTransportDefaults applies the defaults from http.DefaultTransport
 // for the Proxy, Dial, and TLSHandshakeTimeout fields if unset
 func SetOldTransportDefaults(t *http.Transport) *http.Transport {

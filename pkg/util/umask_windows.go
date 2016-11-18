@@ -1,4 +1,4 @@
-// +build windows
+// +build windows appengine
 
 /*
 Copyright 2014 The Kubernetes Authors.

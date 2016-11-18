@@ -23,9 +23,6 @@ import (
 	"strconv"
 	"strings"
 
-	"k8s.io/client-go/pkg/genericapiserver/openapi/common"
-
-	"github.com/go-openapi/spec"
 	"github.com/google/gofuzz"
 )
 
@@ -102,17 +99,6 @@ func (intstr IntOrString) MarshalJSON() ([]byte, error) {
 		return json.Marshal(intstr.StrVal)
 	default:
 		return []byte{}, fmt.Errorf("impossible IntOrString.Type")
-	}
-}
-
-func (_ IntOrString) OpenAPIDefinition() common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type:   []string{"string"},
-				Format: "int-or-string",
-			},
-		},
 	}
 }
 

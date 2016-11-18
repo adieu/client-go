@@ -1,4 +1,4 @@
-// +build !windows,!appengine
+// +build appengine
 
 /*
 Copyright 2014 The Kubernetes Authors.
@@ -16,12 +16,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package util
+package net
 
 import (
-	"syscall"
+	"net/http"
 )
 
-func Umask(mask int) (old int, err error) {
-	return syscall.Umask(mask), nil
-}
+var defaultTransport *http.Transport
